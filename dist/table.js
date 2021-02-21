@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class Table {
     constructor() {
         this.table_name = null;
@@ -13,4 +12,4 @@ class Table {
         this.columns = [];
     }
 }
-exports.default = Table;
+module.exports = Table;

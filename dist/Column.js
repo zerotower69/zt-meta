@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //定义列类
 const fs = require("fs-extra");
 const path = require("path");
@@ -19,4 +18,4 @@ class Column {
         this.isPrimary = false;
     }
 }
-exports.default = Column;
+module.exports = Column;

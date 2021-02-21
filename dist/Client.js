@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class Client {
     constructor(host, user, port = "3306", password) {
         this.host = host;
@@ -8,4 +7,4 @@ class Client {
         this.password = password;
     }
 }
-exports.default = Client;
+module.exports = Client;

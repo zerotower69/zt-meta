@@ -29,4 +29,4 @@ class Column{
   }
 
 }
-export default Column
+export= Column

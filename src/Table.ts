@@ -22,4 +22,4 @@ class Table {
     this.columns = [];
   }
 }
-export default Table
+export= Table

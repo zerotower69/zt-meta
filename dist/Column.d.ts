@@ -12,5 +12,5 @@ declare class Column {
     isPrimary: boolean;
     constructor();
 }
-export default Column;
+export = Column;
 //# sourceMappingURL=Column.d.ts.map

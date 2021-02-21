@@ -5,5 +5,5 @@ declare class Client {
     password?: string;
     constructor(host: string, user: string, port?: string, password?: string);
 }
-export default Client;
+export = Client;
 //# sourceMappingURL=Client.d.ts.map

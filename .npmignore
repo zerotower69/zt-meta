@@ -1,6 +1,8 @@
-/node_modules
-/src
-/tests
+node_modules/
+src/
+tests/
+dist/*.ts.map
+dist/*.d.ts
 package-lock.json
 tsconfig.json
 tslint.json
