@@ -1,0 +1,3 @@
+class ZtMetaError extends Error{
+  
+}

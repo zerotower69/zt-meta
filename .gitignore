@@ -1,1 +1,4 @@
 /node_modules
+tsconfig.json
+tslint.json
+/dist/*.d.ts.map
