@@ -1,2 +1,8 @@
 /node_modules
 /dist/*.d.ts.map
+/dist/*.d.ts
+/src
+/tests
+package-lock.json
+tsconfig.json
+tslint.json

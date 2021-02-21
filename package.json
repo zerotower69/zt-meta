@@ -24,8 +24,8 @@
       "node"
     ]
   },
-  "keywords": [],
-  "author": "zerotower<zerotower@163.com>",
+  "keywords": ["mysql","metadata","typescript"],
+  "author": "zerotower<zero@zerotower.xyz>",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^26.0.20",
