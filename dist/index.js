@@ -141,17 +141,31 @@ class ZtMeta {
     findPrimaryKey(database, table_name) {
         return new Promise((resolve, reject) => {
             //1.connect the connnection
+            if (database == undefined || table_name == undefined)
+                reject(new Error("less params of function!"));
             this._connection.connect((err) => {
-                reject(err);
+                if (err)
+                    reject(err);
             });
             //2.query and set data
             this._connection.query(sql_1.default.FIND_PRIMARY, [database, table_name], (err, results, fields) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    // console.log(results);
+                    let primary_key = null;
+                    results.forEach((rt) => {
+                        if (rt.CONSTRAINT_NAME === "PRIMARY") {
+                            primary_key = rt.COLUMN_NAME;
+                        }
+                    });
+                    resolve(primary_key);
+                }
+            });
+            this._connection.end((err) => {
                 if (err)
                     reject(err);
-                else {
-                    if ()
-                        ;
-                }
             });
         });
     }

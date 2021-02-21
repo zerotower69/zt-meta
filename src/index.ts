@@ -4,6 +4,8 @@ import Table from './Table';
 import Column from './Column';
 import Utils from './utils';
 import SQL from './sql'
+import { AnyARecord } from 'node:dns';
+import { error } from 'node:console';
 // 定义返回的结果集
 interface Result {
 
@@ -91,7 +93,7 @@ class ZtMeta {
     })
   }
   /**list all columns of table */
-  listColumns(database: string, table: string | Table,withPrimaryKey:boolean=true): Promise<Column[]> {
+  listColumns(database: string, table: string | Table, withPrimaryKey: boolean = true): Promise<Column[]> {
     return new Promise((resolve, reject) => {
       //1.connect
       this._connection.connect((err: Error) => {
@@ -136,19 +138,30 @@ class ZtMeta {
     })
   }
   /** find primary key of table*/
-  findPrimaryKey(database: string, table_name: string):Promise<string|null> {
+  findPrimaryKey(database: string, table_name: string): Promise<string|null> {
     return new Promise((resolve, reject) => {
       //1.connect the connnection
+      if(database==undefined||table_name==undefined) reject(new Error("less params of function!"))
       this._connection.connect((err: Error) => {
-        reject(err);
+        if (err) reject(err);
       })
       //2.query and set data
       this._connection.query(SQL.FIND_PRIMARY, [database, table_name], (err: Error, results: any, fields: any) => {
-        if (err) reject(err);
+        if (err) { reject(err) }
         else {
-          if()
+          // console.log(results);
+          let primary_key:string|null = null;
+          results.forEach((rt: any) => {
+            if (rt.CONSTRAINT_NAME === "PRIMARY") {
+              primary_key = rt.COLUMN_NAME;
+            }
+          })
+          resolve(primary_key);
         }
       })
+      this._connection.end((err: Error) => {
+        if (err) reject(err);
+      });
     })
   }
 }

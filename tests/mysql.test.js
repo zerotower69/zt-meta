@@ -1,5 +1,5 @@
 const mysql=require("mysql")
-const SQL =require("../dist/src/sql")
+const SQL =require("../dist/sql")
 const db=new mysql.createConnection({
     host:'127.0.0.1',
     user:'root',
@@ -15,16 +15,15 @@ db.connect()
 //     }
 // })
 let sql="select column_name,is_nullable,data_type,column_type,column_key,column_comment,column_default from information_schema.columns where table_schema='security_oauth' and table_name='t_permission' ";
-db.query(SQL.,(err,result)=>{
+db.query(SQL.FIND_PRIMARY,["security_oauth","t_permission"],(err,result)=>{
+    console.log(SQL.FIND_PRIMARY);
     if(err){
         console.log(err);
     }
     else{
-        let aa=[];
-        result.forEach(element => {
-            // aa.push(element["TABLE_NAME"])
-        });
-        console.log(result)
+       result.forEach(rt=>{
+           console.log(rt);
+       })
     }
 })
 
