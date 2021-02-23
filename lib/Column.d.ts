@@ -13,4 +13,3 @@ declare class Column {
     constructor();
 }
 export default Column;
-//# sourceMappingURL=Column.d.ts.map

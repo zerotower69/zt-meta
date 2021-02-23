@@ -1,7 +1,4 @@
-
-/// <reference types="@types/mysql" />
-
-import { ConnectionOptions, MysqlError,Connection } from "mysql";
+import { MysqlError, ConnectionOptions,Connection } from 'mysql';
 
 
 export interface Client extends ConnectionOptions {
@@ -68,8 +65,6 @@ export interface listColumnsConfig {
   withPrimaryKey: boolean;
 }
 
-export interface ZtMetaError extends MysqlError {
-}
 export interface Helps{
    getTable(client: Client, database: string):Promise<Table[]>
 }
@@ -78,21 +73,21 @@ export interface Ztmeta {
   /**
    * list all databases
    * @param {listDBConfig} config 
-   * @param {(err:ZtMetaError,data?:string[],sql?:string,info?:string)=>void} callback 
+   * @param {(err:SqlError,data?:string[],sql?:string,info?:string)=>void} callback 
    */
-  listDatabases(config?: listDBConfig, callback?: (err: ZtMetaError|null, dbs?: string[], sql?: string, info?: string) => void): void;
+  listDatabases(config?: listDBConfig, callback?: (err: SqlError|null, dbs?: string[], sql?: string, info?: string) => void): void;
   /**
    *  view your MySQL version
    * @param callback 
    */
-  showVersion(callback: (err: ZtMetaError|null, version?: string | null, sql?: string, info?: string) => void): void;
+  showVersion(callback: (err: SqlError|null, version?: string | null, sql?: string, info?: string) => void): void;
   /**
    * list all tables when specify the database
    * @param database 
    * @param config 
    * @param callback 
    */
-  listTables(database: string, config?: listTablesConfig, callback?: (err: ZtMetaError|null, tables?: Table[], sql?: string, info?: string) => void): void;
+  listTables(database: string, config: listTablesConfig|{}, callback: (err: SqlError|null, tables?: Table[]|null, sql?: string|null, info?: string) => void): void;
   /**
    * list all columns when specify the table
    * @param {String} database trhe database name
@@ -100,13 +95,12 @@ export interface Ztmeta {
    * @param {listColumnConfig} config 
    * @param callback 
    */
-  listColumns(database: string, table: string, config?: listColumnsConfig | {}, callback?: (err: ZtMetaError|null, columns?: Column[], sql?: string, info?: string) => void): void;
+  listColumns(database: string, table: string, config?: listColumnsConfig | {}, callback?: (err: SqlError|null, columns?: Column[]|null, sql?: string, info?: string) => void): void;
   /**
    * find  one primary key of table
    * @param database 
    * @param table 
    * @param callback 
    */
-  findPrimaryKey(database: string, table: string, callback: (err: ZtMetaError|null, priKey?: string | null, sql?: string, info?: string) => void): void;
+  findPrimaryKey(database: string, table: string, callback: (err: SqlError|null, priKey?: string | null, sql?: string, info?: string) => void): void;
 }
-

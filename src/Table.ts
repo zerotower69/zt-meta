@@ -1,8 +1,6 @@
-import { Column, Table } from '../types';
+import * as Type  from '../types';
 
-/// <reference types="../types" />
-
-class TableImpl implements Table {
+class Table implements Type.Table {
   constructor() {
     this.table_name = null;
     this.table_type = null;
@@ -14,6 +12,7 @@ class TableImpl implements Table {
     this.primary_key = null;
     this.columns = [];
   }
+  columns: Type.Column[];
   table_name: string | null;
   table_type: string | null;
   table_rows: string | null;
@@ -21,7 +20,7 @@ class TableImpl implements Table {
   create_time: string | null;
   update_time: string | null;
   table_comment: string | null;
-  primary_key: Column | null;
-  columns: Column[];
+  primary_key: Type.Column | null;
+  // columns: Type.Column[];
 }
-export = TableImpl
+export =Table
