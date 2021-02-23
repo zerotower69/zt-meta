@@ -1,12 +1,3 @@
-
-//定义列类
-const fs = require("fs-extra")
-const path =require("path")
-//load 
-let java: object;
-fs.readJson("../json/java.json", (err: Error, obj: object) => {
-  if(!err) java=obj
-})
 class Column{
   /**column name */
   col_name: string;

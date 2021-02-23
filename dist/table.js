@@ -1,6 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class Table {
+/// <reference types="../types" />
+class TableImpl {
     constructor() {
         this.table_name = null;
         this.table_type = null;
@@ -13,4 +13,4 @@ class Table {
         this.columns = [];
     }
 }
-exports.default = Table;
+module.exports = TableImpl;

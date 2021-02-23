@@ -3,26 +3,14 @@
   "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
-  "typings": "types/index.d.ts",
+  "types": "types/index.d.ts",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest",
     "build": "tsc",
     "watch": "tsc --watch"
   },
   "jest": {
-    "rootDir": "tests",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "rootDir": "tests"
   },
   "keywords": [],
   "author": "zerotower<zerotower@163.com>",
@@ -30,13 +18,16 @@
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.31",
-    "fs-extra": "^9.1.0",
     "jest": "^26.6.3",
-    "mysql": "^2.18.1",
     "path": "^0.12.7",
     "ts-jest": "^26.5.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.1.5",
+    "vue-scroll": "^2.1.13"
+  },
+  "dependencies": {
+    "@types/mysql": "^2.15.17",
+    "mysql": "^2.18.1"
   },
   "files": [
     "src"

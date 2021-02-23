@@ -1,5 +1,6 @@
-import Column from './Column';
-declare class Table {
+import { Column, Table } from '../types';
+declare class TableImpl implements Table {
+    constructor();
     table_name: string | null;
     table_type: string | null;
     table_rows: string | null;
@@ -9,7 +10,6 @@ declare class Table {
     table_comment: string | null;
     primary_key: Column | null;
     columns: Column[];
-    constructor();
 }
-export default Table;
+export = TableImpl;
 //# sourceMappingURL=Table.d.ts.map
