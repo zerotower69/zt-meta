@@ -1,4 +1,5 @@
-const ZtMeta=require('./lib');
+// const ZtMeta=require('./lib');
+const ZtMeta=require("zt-meta");
 const mysql=require('mysql');
 const Help =require("./lib/Help");
 console.log(ZtMeta);
@@ -22,12 +23,12 @@ ztmeta.listTables("security_oauth",{withPrimaryKey:true},(err,tables,sql,info)=>
 });
 
 ztmeta.findPrimaryKey("security_oauth","t_permission",(err,key,sql,info)=>{
-    // if(err) console.log(err);
-    // else console.log(key);
+    if(err) console.log(err);
+    else console.log(key);
 });
 
 ztmeta.showVersion((err,version,info)=>{
-    if(err) console.log(err);
-    else console.log(version);
-    console.log(`info=${info}`);
+    // if(err) console.log(err);
+    // else console.log(version);
+    // console.log(`info=${info}`);
 });
