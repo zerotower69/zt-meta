@@ -1,5 +1,5 @@
-declare class Column {
-    /**column name */
+import * as Type from "./types";
+declare class Column implements Type.Column {
     col_name: string;
     /** the data type with acute info */
     col_type: string | null;

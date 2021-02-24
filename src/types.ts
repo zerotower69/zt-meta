@@ -3,6 +3,34 @@ import { MysqlError, ConnectionOptions,Connection } from 'mysql';
 
 export interface Client extends ConnectionOptions {
 }
+export interface ClientOptions extends ConnectionOptions{
+  //  /**
+  //    * The MySQL user to authenticate as
+  //    */
+  //   user?: string;
+
+  //   /**
+  //    * The password of that MySQL user
+  //    */
+  //   password?: string;
+
+  //   /**
+  //    * Name of the database to use for this connection
+  //    */
+  //   database?: string;
+
+  //   /**
+  //    * The charset for the connection. This is called "collation" in the SQL-level of MySQL (like utf8_general_ci).
+  //    * If a SQL-level charset is specified (like utf8mb4) then the default collation for that charset is used.
+  //    * (Default: 'UTF8_GENERAL_CI')
+  //    */
+  //   charset?: string;
+
+  //   /**
+  //    * Number of milliseconds
+  //    */
+  //   timeout?: number;
+}
 
 export interface Column {
   /**column name */
@@ -53,7 +81,7 @@ export interface listDBConfig {
 }
 
 /** list tables config */
-export interface listTablesConfig {
+export interface listTableOptions {
   /** list tables with all columns add to it or not? */
   withColumns?: boolean;
   /** show table with its primary key or not? */
@@ -73,21 +101,21 @@ export interface Ztmeta {
   /**
    * list all databases
    * @param {listDBConfig} config 
-   * @param {(err:SqlError,data?:string[],sql?:string,info?:string)=>void} callback 
+   * @param {(err: SqlError|null, dbs?: string[]|null, info?: string) => void)} callback
    */
-  listDatabases(config?: listDBConfig, callback?: (err: SqlError|null, dbs?: string[], sql?: string, info?: string) => void): void;
+  listDatabases(config: listDBConfig|{}, callback : (err: SqlError|null, dbs?: string[]|null, info?: string) => void): void;
   /**
    *  view your MySQL version
    * @param callback 
    */
-  showVersion(callback: (err: SqlError|null, version?: string | null, sql?: string, info?: string) => void): void;
+  showVersion(callback: (err: SqlError|null, version?: string | null,info?: string) => void): void;
   /**
    * list all tables when specify the database
    * @param database 
    * @param config 
    * @param callback 
    */
-  listTables(database: string, config: listTablesConfig|{}, callback: (err: SqlError|null, tables?: Table[]|null, sql?: string|null, info?: string) => void): void;
+  listTables(database: string, config: listTableOptions|{}, callback: (err: SqlError|null, tables?: Table[]|null, sql?: string|null, info?: string) => void): void;
   /**
    * list all columns when specify the table
    * @param {String} database trhe database name
@@ -102,5 +130,5 @@ export interface Ztmeta {
    * @param table 
    * @param callback 
    */
-  findPrimaryKey(database: string, table: string, callback: (err: SqlError|null, priKey?: string | null, sql?: string, info?: string) => void): void;
+  findPrimaryKey(database: string, table: string, callback: (err: SqlError|null, priKey?: Column | null, sql?: string|null, info?: string) => void): void;
 }
